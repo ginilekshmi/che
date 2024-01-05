@@ -19,6 +19,9 @@ components:
     memoryRequest: 256Mi
     cpuLimit: 500m
     cpuRequest: 30m
+    volumeMounts:
+        - name: example
+          path: /.cache
 commands:
 - id: update-contributing
   exec:
