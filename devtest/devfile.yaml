@@ -1,12 +1,18 @@
-schemaVersion: 2.2.0
+schemaVersion: 2.1.0
 metadata:
-  name: stock-udi-rhel8-3.11-14
+  name: test-settings
+
 components:
-  - name: python
+  - name: tools
     container:
-      image: registry.redhat.io/devspaces/udi-rhel8:3.11-14
-      memoryLimit: '2Gi'
-      memoryRequest: '1Gi'
-      cpuLimit: '1'
-      cpuRequest: '1'
-      mountSources: true
+      image: quay.io/devfile/universal-developer-image:ubi8-latest
+      memoryLimit: 2G
+      VolumeMounts:
+        - name: my-persisted-home
+          path: /home/user/
+  - name: my-persisted-home
+    volume: {}
+
+
+
+
