@@ -1,7 +1,6 @@
 schemaVersion: 2.1.0
 metadata:
   name: test-settings
-
 components:
   - name: tools
     container:
