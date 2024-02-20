@@ -6,9 +6,6 @@ components:
     container:
       image: quay.io/devfile/universal-developer-image:ubi8-latest
       memoryLimit: 2G
-      VolumeMounts:
-        - name: my-persisted-home
-          path: /home/user/
   - name: my-persisted-home
     volume: {}
 
