@@ -64,7 +64,7 @@ commands:
     exec:
       label: Build container image from Dockerfile
       component: dev-container
-      commandLine: "podman build -t registry.dst.tk-inline.net/s224839/demobuilt:latest --label \"quay.expires-after=2w\" -f Dockerfile && podman push registry.dst.tk-inline.net/s224839/demobuilt:latest"
+      commandLine: "podman build -t quay.io/rhn_support_gio/test/demobuilt:latest --label \"quay.expires-after=2w\" -f Dockerfile && podman push quay.io/rhn_support_gio/test/demobuilt:latest"
       workingDir: '${PROJECT_SOURCE}'       
   - id: run-app
     exec:
