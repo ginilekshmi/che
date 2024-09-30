@@ -1,6 +1,8 @@
 schemaVersion: 2.2.0
 metadata:
   name: eclipse-che-postgres
+attributes:
+  controller.devfile.io/scc: container-build
 components:
   - name: dev-container
     container:
