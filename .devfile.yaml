@@ -11,12 +11,6 @@ metadata:
   name: che
 attributes:
   controller.devfile.io/storage-type: ephemeral
-  .vscode/extensions.json: |
-    {
-      "recommendations": [
-        "redhat.java"
-      ]
-    }
 components:
 - name: devtools
   container:
