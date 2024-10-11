@@ -36,6 +36,13 @@ components:
       - name: KUBEDOCK_ENABLED
         value: 'true'
 commands:
+- id: say-hello
+  apply:
+    component: devtools
+    commandLine: echo "hello gdmrng"
+    group: 
+      kind: preStart
+      isDefault: true
 - id: update-contributing
   exec:
     commandLine: '.repositories-update-contributing.sh IN_DOCKER'
