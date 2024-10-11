@@ -1,13 +1,6 @@
 schemaVersion: 2.2.0
 metadata:
   name: stock-udi-rhel8-3.11-14
-attributes:
-  .vscode/extensions.json: |
-    {
-      "recommendations": [
-        "redhat.java"
-      ]
-    }
 components:
   - name: python
     container:
