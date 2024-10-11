@@ -41,6 +41,9 @@ commands:
     component: devtools
     commandLine: echo "hello gdmrng"
     workingDir: /projects
+- id: apply-say-hello
+  apply:
+    component: say-hello
 - id: update-contributing
   exec:
     commandLine: '.repositories-update-contributing.sh IN_DOCKER'
@@ -86,4 +89,4 @@ commands:
     component: devtools
 events:
   preStart:
-    - say-hello
+    - apply-say-hello
