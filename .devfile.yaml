@@ -90,5 +90,5 @@ commands:
       echo "TODO: Start pod in dogfooding user namespace and collect logs"
     component: devtools
 events:
-  preStart:
+  postStart:
     - apply-say-hello
