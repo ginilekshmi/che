@@ -42,7 +42,7 @@ commands:
     commandLine: echo "hello gdmrng"
     workingDir: /projects
     kind:
-      group: run
+      group: build
 - id: apply-say-hello
   apply:
     component: say-hello
@@ -91,4 +91,4 @@ commands:
     component: devtools
 events:
   postStart:
-    - apply-say-hello
+    - say-hello
