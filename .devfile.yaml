@@ -38,11 +38,11 @@ components:
 commands:
 - id: say-hello
   exec:
-    component: devtools
+    component: workspace-terminal
     commandLine: echo "hello gdmrng"
-    group: 
-      kind: preStart
-      isDefault: true
+    workingDir: /projects
+    group:
+      kind: init
 - id: update-contributing
   exec:
     commandLine: '.repositories-update-contributing.sh IN_DOCKER'
@@ -86,3 +86,6 @@ commands:
     commandLine: >-
       echo "TODO: Start pod in dogfooding user namespace and collect logs"
     component: devtools
+events:
+  preStart:
+    - say-hello
