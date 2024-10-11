@@ -37,7 +37,7 @@ components:
         value: 'true'
 commands:
 - id: say-hello
-  exec:
+  apply:
     component: devtools
     commandLine: echo "hello gdmrng"
     workingDir: /projects
