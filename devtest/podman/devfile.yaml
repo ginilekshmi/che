@@ -1,74 +1,88 @@
-schemaVersion: 2.2.0
+schemaVersion: 2.2.2
 metadata:
-  name: eclipse-che-postgres
-attributes:
-  controller.devfile.io/scc: container-build
-components:
-  - name: dev-container
-    container:
-      image: 'registry.redhat.io/devspaces/udi-rhel8:3.15'
-      memoryLimit: 1Gi
-      memoryRequest: 100Mi
-      cpuLimit: '3'
-      cpuRequest: '30m'
-      mountSources: true
-      env:
-        - name: KUBEDOCK_ENABLED
-          value: 'true'
-      endpoints:
-        - name: http
-          targetPort: 8080
-  - name: postgres
-    container:
-      image: registry.redhat.io/rhel8/postgresql-13
-      memoryLimit: 1Gi
-      memoryRequest: 100Mi
-      cpuRequest: 30m
-      mountSources: true
-      env:
-        - name: POSTGRESQL_USER
-          value: devuser
-        - name: POSTGRESQL_PASSWORD
-          value: devpassword
-        - name: POSTGRESQL_DATABASE
-          value: devdb
-      volumeMounts:
-        - name: postgres-data
-          path: /var/lib/pgsql/data
-      endpoints:
-        - name: postgres
-          targetPort: 5432
-          exposure: internal
-  - name: postgres-data
-    volume: {}
+  name: che-code
+  displayName: VS Code - Open Source
+  description: Microsoft Visual Studio Code - Open Source IDE for Eclipse Che - Insiders build
+  icon: /images/vscode.svg
+  tags:
+    - Tech-Preview
+  attributes:
+    publisher: che-incubator
+    version: insiders
+    title: Microsoft Visual Studio Code - Open Source IDE for Eclipse Che - Insiders build
+    repository: https://github.com/che-incubator/che-code
+    firstPublicationDate: '2021-10-31'
 commands:
-  - id: create-table
+  - id: init-container-command
+    apply:
+      component: che-code-injector
+  - id: init-che-code-command
     exec:
-      label: Create Postgres Table    
-      component: postgres
-      commandLine: bash -c \"psql -c \"CREATE TABLE demo_table (id SERIAL PRIMARY KEY, my_text VARCHAR);\"\"
-      workingDir: '${PROJECT_SOURCE}' 
-  - id: check-postgres-status
-    exec:
-      label: Check Postgres Status
-      component: postgres
-      commandLine: bash -c "pg_isready -U devuser -d devdb"
-      workingDir: '${PROJECT_SOURCE}'
-  - id: install-dep-packages
-    exec:
-      label: Install packages in requirements.txt
-      component: dev-container
-      commandLine: pip install -r requirements.txt
-      workingDir: '${PROJECT_SOURCE}'
-  - id: build-image
-    exec:
-      label: Build container image from Dockerfile
-      component: dev-container
-      commandLine: "podman build -t quay.io/rhn_support_gio/test/demobuilt:latest --label \"quay.expires-after=2w\" -f Dockerfile && podman push quay.io/rhn_support_gio/test/demobuilt:latest"
-      workingDir: '${PROJECT_SOURCE}'       
-  - id: run-app
-    exec:
-      label: Run the app
-      component: dev-container
-      commandLine: uvicorn app:app --reload
-      workingDir: '${PROJECT_SOURCE}' 
+      component: che-code-runtime-description
+      commandLine: nohup /checode/entrypoint-volume.sh > /checode/entrypoint-logs.txt 2>&1 &
+events:
+  preStart:
+    - init-container-command
+  postStart:
+    - init-che-code-command
+components:
+  - name: che-code-injector
+    container:
+      image: quay.io/che-incubator/che-code:insiders
+      command:
+        - /entrypoint-init-container.sh
+      volumeMounts:
+        - name: checode
+          path: /checode
+      memoryLimit: 256Mi
+      memoryRequest: 32Mi
+      cpuLimit: 500m
+      cpuRequest: 30m
+  - name: che-code-runtime-description
+    container:
+      image: quay.io/devfile/universal-developer-image@sha256:1b84280bea96228affa7ecedd7347e6801f6e369bdfa7e40dabfc4fa99f9cad6
+      memoryLimit: 1024Mi
+      memoryRequest: 256Mi
+      cpuLimit: 500m
+      cpuRequest: 30m
+      volumeMounts:
+        - name: checode
+          path: /checode
+      endpoints:
+        - name: che-code
+          attributes:
+            type: main
+            cookiesAuthEnabled: true
+            discoverable: false
+            urlRewriteSupported: true
+          targetPort: 3100
+          exposure: public
+          secure: true
+          protocol: https
+        - name: code-redirect-1
+          targetPort: 13131
+          exposure: public
+          protocol: https
+          attributes:
+            discoverable: false
+            urlRewriteSupported: false
+        - name: code-redirect-2
+          targetPort: 13132
+          exposure: public
+          protocol: https
+          attributes:
+            discoverable: false
+            urlRewriteSupported: false
+        - name: code-redirect-3
+          targetPort: 13133
+          exposure: public
+          protocol: https
+          attributes:
+            discoverable: false
+            urlRewriteSupported: false
+    attributes:
+      app.kubernetes.io/component: che-code-runtime
+      app.kubernetes.io/part-of: che-code.eclipse.org
+      controller.devfile.io/container-contribution: true
+  - name: checode
+    volume: {}
