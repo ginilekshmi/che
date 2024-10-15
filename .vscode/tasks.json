@@ -4,18 +4,13 @@
         {
             "label": "print hello",
             "type": "shell",
-            "command": "echo Hello testing",
-            "windows": {
-                "command": "echo Hello, This is tetsing"
+            "command": "echo 'Hello testing' > hello.txt",
+        },
+            "group": {
+               "kind": "build",
+                "isDefault": true
             },
-            "group": "none",
-            "presentation": {
-                "reveal": "always",
-                "panel": "new"
-            },
-            "runOptions": {
-                "runOn": "folderOpen",
-            }
+            "problemMatcher": []
         }
     ]
 }
