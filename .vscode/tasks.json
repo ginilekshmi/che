@@ -4,7 +4,7 @@
         {
             "label": "print hello",
             "type": "shell",
-            "command": "echo Hello",
+            "command": "echo Hello testing",
             "windows": {
                 "command": "echo Hello, This is tetsing"
             },
