@@ -6,7 +6,7 @@
             "type": "shell",
             "command": "echo Hello",
             "windows": {
-                "command": "echo Hello"
+                "command": "echo Hello, This is tetsing"
             },
             "group": "none",
             "presentation": {
