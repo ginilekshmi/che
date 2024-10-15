@@ -35,11 +35,6 @@ components:
     env:
       - name: KUBEDOCK_ENABLED
         value: 'true'
-- name: vscode
-  type: cheEditor
-  properties:
-    editorType: vscode
-    version: latest
 commands:
 - id: say-hello
   exec:
