@@ -5,7 +5,6 @@
             "label": "print hello",
             "type": "shell",
             "command": "echo 'Hello testing' > hello.txt",
-        },
             "group": {
                "kind": "build",
                 "isDefault": true
