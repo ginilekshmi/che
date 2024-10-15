@@ -36,6 +36,10 @@ components:
       - name: KUBEDOCK_ENABLED
         value: 'true'
 commands:
+- name: print-hello
+  actions:
+    - type: vscode-task
+      command: print hello
 - id: say-hello
   exec:
     component: devtools
