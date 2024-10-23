@@ -1,0 +1,18 @@
+schemaVersion: 2.3.0
+metadata:
+  generateName: testing
+  language: en
+  provider: abcd
+  description: "Devfile for configuring a Universal Developer Image environment for development."
+components:
+  - name: udi
+    container:
+      image: registry.redhat.io/devspaces/udi-rhel8
+commands:
+  - id: ssologin
+    exec:
+      commandLine: "aws sso login --profile wma-dev"
+      component: udi
+      label: Update the ssologin utility for your workspace
+      workingDir: ${PROJECT_SOURCE}
+     
