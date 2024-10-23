@@ -15,4 +15,7 @@ commands:
       component: udi
       label: Update the ssologin utility for your workspace
       workingDir: ${PROJECT_SOURCE}
+      env:
+        - name: BROWSER
+          value: /checode/checode-linux-libc/ubi8/bin/helpers/browser.sh
      
