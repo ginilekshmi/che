@@ -11,11 +11,12 @@
             },
             "problemMatcher": []
         }
-        {
-					"label": "Open browser",
-					"type": "shell",
-					"command": "$BROWSER https://device.sso.us-west-2.amazonaws.com/",
-					"problemMatcher": []
-		}
+        { 
+		"label": "Open browser",
+		"type": "shell",
+		"command": "$BROWSER https://device.sso.us-west-2.amazonaws.com/",
+		"problemMatcher": []
+					
+	}
     ]
 }
