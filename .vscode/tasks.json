@@ -1,16 +1,6 @@
 {
     "version": "2.0.0",
     "tasks": [
-        {
-            "label": "print hello",
-            "type": "shell",
-            "command": "echo 'Hello testing' > hello.txt",
-            "group": {
-               "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": []
-        }
         { 
 		"label": "Open browser",
 		"type": "shell",
