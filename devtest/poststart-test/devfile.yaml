@@ -6,20 +6,36 @@ components:
     container:
       image: quay.io/devfile/universal-developer-image
 commands:
-  - id: first-command
+  # Post-start events
+  - id: event-one
     exec:
+      commandLine: >-
+        sleep 5 &&
+        date > event-one-date.txt &&
+        sleep 5
       component: tools
-      commandLine: 'sh -c "echo $(date): first command >> /tmp/poststart.log"'
-  - id: second-command
+      label: ""
+      workingDir: "${HOME}"
+  - id: event-two
     exec:
+      commandLine: >-
+        sleep 5 &&
+        date > event-two-date.txt &&
+        sleep 5
       component: tools
-      commandLine: 'sh -c "echo $(date): second command >> /tmp/poststart.log"'
-  - id: third-command
+      label: ""
+      workingDir: "${HOME}"
+  - id: event-three
     exec:
+      commandLine: >-
+        sleep 5 &&
+        date > event-three-date.txt &&
+        sleep 5
       component: tools
-      commandLine: 'sh -c "echo $(date): third command >> /tmp/poststart.log"'
+      label: ""
+      workingDir: "${HOME}"
 events:
   postStart:
-    - first-command
-    - second-command
-    - third-command
+    - event-one
+    - event-two
+    - event-three
