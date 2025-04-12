@@ -10,7 +10,6 @@ commands:
   - id: event-one
     exec:
       commandLine: >-
-        sleep 5 &&
         date > event-one-date.txt
       component: tools
       label: ""
@@ -18,7 +17,6 @@ commands:
   - id: event-two
     exec:
       commandLine: >-
-        sleep 5 &&
         date > event-two-date.txt
       component: tools
       label: ""
@@ -26,7 +24,6 @@ commands:
   - id: event-three
     exec:
       commandLine: >-
-        sleep 5 &&
         date > event-three-date.txt
       component: tools
       label: ""
