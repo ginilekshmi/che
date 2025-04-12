@@ -11,8 +11,7 @@ commands:
     exec:
       commandLine: >-
         sleep 5 &&
-        date > event-one-date.txt &&
-        sleep 5
+        date > event-one-date.txt
       component: tools
       label: ""
       workingDir: "${HOME}"
@@ -20,7 +19,7 @@ commands:
     exec:
       commandLine: >-
         sleep 5 &&
-        date > event-two-date.txt &&
+        date > event-two-date.txt
       component: tools
       label: ""
       workingDir: "${HOME}"
@@ -28,7 +27,7 @@ commands:
     exec:
       commandLine: >-
         sleep 5 &&
-        date > event-three-date.txt &&
+        date > event-three-date.txt
       component: tools
       label: ""
       workingDir: "${HOME}"
