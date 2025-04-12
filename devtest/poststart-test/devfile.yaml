@@ -12,7 +12,7 @@ commands:
       commandLine: >-
         sh -c 'sleep 5 && \
         date > /home/user/event-one-date.txt && \
-        echo "$(date): first command" >> /tmp/poststart.log && \
+        echo "$(/usr/bin/date): first command" >> /tmp/poststart.log && \
         sleep 5'
       component: tools
       label: ""
@@ -22,7 +22,7 @@ commands:
       commandLine: >-
         sh -c 'sleep 5 && \
         date > /home/user/event-two-date.txt && \
-        echo "$(date): second command" >> /tmp/poststart.log && \
+        echo "$(/usr/bin/date): second command" >> /tmp/poststart.log && \
         sleep 5'
       component: tools
       label: ""
@@ -32,7 +32,7 @@ commands:
       commandLine: >-
         sh -c 'sleep 5 && \
         date > /home/user/event-three-date.txt && \
-        echo "$(date): third command" >> /tmp/poststart.log && \
+        echo "$(/usr/bin/date): third command" >> /tmp/poststart.log && \
         sleep 5'
       component: tools
       label: ""
