@@ -9,15 +9,15 @@ commands:
   - id: first-command
     exec:
       component: tools
-      commandLine: "echo first command"
+      commandLine: 'sh -c "echo $(date): first command >> /tmp/poststart.log"'
   - id: second-command
     exec:
       component: tools
-      commandLine: "echo second command"
+      commandLine: 'sh -c "echo $(date): second command >> /tmp/poststart.log"'
   - id: third-command
     exec:
       component: tools
-      commandLine: "echo third command"
+      commandLine: 'sh -c "echo $(date): third command >> /tmp/poststart.log"'
 events:
   postStart:
     - first-command
