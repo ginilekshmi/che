@@ -1,1 +1,25 @@
-
+schemaVersion: 2.1.0
+metadata:
+  name: multi-post-start
+components:
+  - name: tools
+    container:
+      image: quay.io/devfile/universal-developer-image
+commands:
+  - id: first-command
+    exec:
+      component: tools
+      commandLine: "echo first command"
+  - id: second-command
+    exec:
+      component: tools
+      commandLine: "echo second command"
+  - id: third-command
+    exec:
+      component: tools
+      commandLine: "third command"
+events:
+  postStart:
+    - first-command
+    - second-command
+    - third-command
