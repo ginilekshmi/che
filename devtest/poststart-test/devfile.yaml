@@ -17,7 +17,7 @@ commands:
   - id: third-command
     exec:
       component: tools
-      commandLine: "third command"
+      commandLine: "echo third command"
 events:
   postStart:
     - first-command
