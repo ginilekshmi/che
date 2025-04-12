@@ -21,7 +21,6 @@ commands:
       commandLine: >-
         sleep 5 &&
         date > event-two-date.txt &&
-        sleep 5
       component: tools
       label: ""
       workingDir: "${HOME}"
@@ -30,7 +29,6 @@ commands:
       commandLine: >-
         sleep 5 &&
         date > event-three-date.txt &&
-        sleep 5
       component: tools
       label: ""
       workingDir: "${HOME}"
