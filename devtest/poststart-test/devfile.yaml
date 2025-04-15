@@ -2,7 +2,7 @@ schemaVersion: 2.1.0
 metadata:
   name: multi-post-start
 components:
-  - name: tools
+  - name: udi
     container:
       image: quay.io/devfile/universal-developer-image
 commands:
