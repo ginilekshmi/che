@@ -6,28 +6,35 @@ components:
     container:
       image: quay.io/devfile/universal-developer-image
 commands:
-  # Post-start events
+   # Post-start events
   - id: event1
     exec:
       commandLine: >-
-        date > event-one-date.txt
-      component: tools
+        sleep 5 &&
+        date > event-one-date.txt &&
+        sleep 5
+      component: udi
       label: ""
       workingDir: "${HOME}"
   - id: event2
     exec:
       commandLine: >-
-        date > event-two-date.txt
-      component: tools
+        sleep 5 &&
+        date > event-two-date.txt &&
+        sleep 5
+      component: udi
       label: ""
       workingDir: "${HOME}"
   - id: event3
     exec:
       commandLine: >-
-        date > event-three-date.txt
-      component: tools
+        sleep 5 &&
+        date > event-three-date.txt &&
+        sleep 5
+      component: udi
       label: ""
       workingDir: "${HOME}"
+
 events:
   postStart:
     - event1
