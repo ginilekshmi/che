@@ -7,21 +7,21 @@ components:
       image: quay.io/devfile/universal-developer-image
 commands:
   # Post-start events
-  - id: event-one
+  - id: event1
     exec:
       commandLine: >-
         date > event-one-date.txt
       component: tools
       label: ""
       workingDir: "${HOME}"
-  - id: event-two
+  - id: event2
     exec:
       commandLine: >-
         date > event-two-date.txt
       component: tools
       label: ""
       workingDir: "${HOME}"
-  - id: event-three
+  - id: event3
     exec:
       commandLine: >-
         date > event-three-date.txt
