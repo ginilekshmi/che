@@ -11,7 +11,7 @@ commands:
     exec:
       commandLine: >-
         sleep 5 &&
-        date > event-one-date.txt &&
+        date > event1-date.txt &&
         sleep 5
       component: udi
       label: ""
@@ -20,7 +20,7 @@ commands:
     exec:
       commandLine: >-
         sleep 5 &&
-        date > event-two-date.txt &&
+        date > event2-date.txt &&
         sleep 5
       component: udi
       label: ""
@@ -29,7 +29,7 @@ commands:
     exec:
       commandLine: >-
         sleep 5 &&
-        date > event-three-date.txt &&
+        date > event3-date.txt &&
         sleep 5
       component: udi
       label: ""
