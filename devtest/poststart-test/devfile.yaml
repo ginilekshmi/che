@@ -6,7 +6,7 @@ components:
     container:
       image: quay.io/devfile/universal-developer-image
 commands:
-   # Post-start events
+  # Post-start events
   - id: event1
     exec:
       commandLine: >-
@@ -34,7 +34,6 @@ commands:
       component: udi
       label: ""
       workingDir: "${HOME}"
-
 events:
   postStart:
     - event1
