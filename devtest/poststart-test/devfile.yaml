@@ -30,6 +30,6 @@ commands:
       workingDir: "${HOME}"
 events:
   postStart:
-    - event-one
-    - event-two
-    - event-three
+    - event1
+    - event2
+    - event3
